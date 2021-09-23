@@ -9,17 +9,23 @@ class Calculator:
                 if stack == []:
                     return "Can not add with out an interger"
                 else:
-                    result = stack.append(stack.pop() + stack.pop())
-                    print (result) 
+                    val1 = stack.pop()
+                    val2 = stack.pop()
+                    # print(val1)
+                    # print(val2)
+                    result = stack.append(val1 + val2)
+                    # print (result) 
             elif x == '-':
-                val1 = stack.pop
-                val2 = stack.pop
                 if stack == []:
-                    return "Can not add with out an intergers"    
+                    return "Can not subtract with out an intergers"    
                 else:
-                    result = val2 - val1
+                    val1 = stack.pop()
+                    val2 = stack.pop()
+                    result = stack.append(val2 - val1)
             elif x == '*':
                 result = stack.append(stack.pop() * stack.pop())
             elif x == '/':
+                val1 = stack.pop()
+                val2 = stack.pop()
                 result = stack.append(val2 / val1)
-        return result
+        return stack 
