@@ -3,7 +3,7 @@ class Calculator:
         global stack 
         user_input = input.split(" ")
         for y in user_input:
-            if y.isdigit():
+            if y not in ("-", "+", "*", "/"):
                 stack.append(int(y))
             elif y == '+':
                 if stack == []:
@@ -43,6 +43,7 @@ while user_input not in ("exit", "q", "stop", "close"):
         print("Please write an expression")
     user_input = input(">")
     output = calc.calculate(user_input)
+    print(stack)
     print(output)
 print("Thank you for using the calulator... ")
 print("Now closing the calculator")
