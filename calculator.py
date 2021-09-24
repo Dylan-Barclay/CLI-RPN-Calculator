@@ -1,42 +1,54 @@
+import re
 class Calculator:
     def calculate(self, input):
         global stack
-        user_input = input.split(" ")
-        for input in user_input:
-            if input.lower() not in ("-", "+", "*", "/", "exit", "q", "stop", "close", "clear", "c", ""):
-                stack.append(int(input))
-            elif input == '+' and len(stack)>1:
+        input = input.split(" ")
+        for action in input:
+            if action.lower() not in ("-", "+", "*", "/", "exit", "q", "stop", "close", "clear", "c", "", ["a-z"]):
+                stack.append(int(action))
+            elif action == '+' and len(stack)>1:
                 if stack == []:
-                    return "Can not add with out an interger"
+                    return  "There are no numbers in memory"
+                elif len(stack) < 1:
+                    return "You need one more number to add please"
                 else:
                     val1 = stack.pop()
                     val2 = stack.pop()
                     stack.append(val1 + val2)
-            elif input == '-' and len(stack)>1:
+            elif action == '-' and len(stack)>1:
                 if stack == []:
-                    return "Can not subtract with out an intergers"    
+                    return  "There are no numbers in memory"    
+                elif len(stack) < 1:
+                    return "You need one more number to add please"
                 else:
                     val1 = stack.pop()
                     val2 = stack.pop()
                     stack.append(val2 - val1)
-            elif input == '*' and len(stack)>1:
+            elif action == '*' and len(stack)>1:
                 if stack == []:
                     return "There are no numbers in memory"
+                elif len(stack) < 1:
+                    return "You need one more number to add please"
                 stack.append(stack.pop() * stack.pop())
-            elif input == '/' and len(stack)>1:
+            elif action == '/' and len(stack)>1:
                 if stack == []:
                     return "There are no number in memory"
+                elif len(stack) < 1:
+                    return "You need one more number to add please"
+                
                 val1 = stack.pop()
                 val2 = stack.pop()
+                if val1 == 0:
+                    return(f" You can not divide by zero... please try another number")
                 stack.append(val2 / val1)
-            elif input in ("exit", "q", "stop", "close"):
+            elif action in ("exit", "q", "stop", "close"):
                 print("Thank you for using the calulator... ")
                 print("Now closing the calculator")
-                break
-            elif input == "":
-                print()
+                return
+            elif action == "":
+                return
             else:
-                print("I am sorry this Calulator can not preform this action please try another")
+                return("I am sorry this Calulator can not preform this action please try another")
         
         if len(stack) > 0:
             print(stack[-1])
@@ -45,7 +57,6 @@ class Calculator:
         return stack 
 
 
-import re
 print("Launching the calculator...")
 stack = []
 calc = Calculator()
