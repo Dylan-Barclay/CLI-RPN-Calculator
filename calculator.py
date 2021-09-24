@@ -3,7 +3,7 @@ class Calculator:
         global stack 
         user_input = input.split(" ")
         for y in user_input:
-            if y not in ("-", "+", "*", "/"):
+            if y not in ("-", "+", "*", "/","q", "clear", "c", ""):
                 stack.append(int(y))
             elif y == '+':
                 if stack == []:
@@ -35,15 +35,22 @@ class Calculator:
 import re
 print("Launching the calculator...")
 stack = []
+exit = ("exit", "q", "stop", "close")
 calc = Calculator()
 user_input = ""
-while user_input not in ("exit", "q", "stop", "close"):
+while user_input.lower() not in exit:
     regex = re.search('[a-zA-Z]', user_input)
-    if regex != None:
+    if user_input.lower() in ["c", "clear"]:
+        stack = []
+        print("The calculator is clearing...")
+        print("The calculator is now clear")
+    elif user_input in exit:
+        print("Thank you for using the calulator... ")
+        print("Now closing the calculator")
+    elif regex != None:
         print("Please write an expression")
     user_input = input(">")
     output = calc.calculate(user_input)
-    print(stack)
-    print(output)
+    print(stack[-1])
 print("Thank you for using the calulator... ")
 print("Now closing the calculator")
