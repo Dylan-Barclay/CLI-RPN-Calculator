@@ -17,4 +17,4 @@ There are multiple ways to clear, and quit
 
 This current version can only handle + - * / operators
 
-If you put a letter in the calculator it will no longer work and you will have to restart. I will continue to work on fixing this issue. 
+If you put a letter other than the ones specifid in the calculator it will no longer work and you will have to restart. I will continue to work on fixing this issue. 
